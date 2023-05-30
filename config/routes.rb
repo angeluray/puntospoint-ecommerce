@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :accounts
+  # devise_for :accounts
+  devise_for :accounts, path: '', path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    registration: 'signup'
+  },
+  controllers: {
+    sessions: 'api/v1/accounts/sessions',
+    registrations: 'api/v1/accounts/registrations'
+  }
+
   namespace :api do
     namespace :v1 do
       resources :accounts
