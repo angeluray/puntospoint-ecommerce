@@ -1,4 +1,4 @@
 class ProductCategorization < ApplicationRecord
-  belongs_to :product
-  belongs_to :category
+  belongs_to :product, touch: true
+  belongs_to :category, touch: true
 end
