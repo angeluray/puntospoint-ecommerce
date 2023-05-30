@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :accounts
       resources :customers
       resources :admins
+      resources :sales
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
