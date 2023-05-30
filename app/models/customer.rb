@@ -1,2 +1,2 @@
-class Customer < ApplicationRecord
+class Customer < Account
 end

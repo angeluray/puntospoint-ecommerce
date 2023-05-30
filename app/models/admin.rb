@@ -1,2 +1,2 @@
-class Admin < ApplicationRecord
+class Admin < Account
 end
