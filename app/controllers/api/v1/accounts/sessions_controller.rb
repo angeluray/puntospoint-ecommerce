@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::Accounts::SessionsController < Devise::SessionsController
+  include MockedRackSession
   respond_to :json
   
   private
@@ -32,5 +33,5 @@ class Api::V1::Accounts::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
-  
+
 end
