@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::Accounts::RegistrationsController < Devise::RegistrationsController
+  include MockedRackSession
   respond_to :json
   
   private
