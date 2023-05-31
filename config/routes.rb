@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  # devise_for :accounts
-  devise_for :accounts, path: '', path_names: {
-    sign_in: 'login',
-    sign_out: 'logout',
-    registration: 'signup'
+  
+  # devise_for :admins
+  devise_for :admins, path: '', path_names: {
+    sign_in: 'admin_login',
+    sign_out: 'admin_logout',
+    registration: 'admin_signup'
   },
   controllers: {
-    sessions: 'api/v1/accounts/sessions',
-    registrations: 'api/v1/accounts/registrations'
+    sessions: 'api/v1/admins/sessions',
+    registrations: 'api/v1/admins/registrations'
   }
 
   namespace :api do
@@ -20,8 +21,5 @@ Rails.application.routes.draw do
       resources :products
     end
   end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
