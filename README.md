@@ -70,15 +70,7 @@ OPTIONAL SECTIONS:
 
 <!-- Features -->
 
-### Key Features <a name="key-features"></a>
-
-> This pr.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
-
-
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
@@ -88,15 +80,11 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:
+In order to run this project you need at least the following versions of:
 
-<!--
-Example command:
-
-```sh
- gem install rails
-```
- -->
+`Ruby 2.7.0, 3.x, 4.x 5.x 6`
+`Ruby on Rails 7.x`
+`PostgreSQL ^12`
 
 ### Setup
 
