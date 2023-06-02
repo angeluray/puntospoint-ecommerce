@@ -10,17 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_225744) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_02_010400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.string "username"
     t.string "password"
     t.string "password_confirmation"
     t.string "auth_token"
+    t.string "address"
+    t.decimal "balance", default: "0.0"
+    t.integer "purchases_count"
     t.string "type"
+    t.integer "role_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -35,25 +40,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_225744) do
   end
 
   create_table "admins", force: :cascade do |t|
-    t.string "username"
-    t.integer "role_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.integer "products_count"
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sales_count", default: 0, null: false
     t.index ["account_id"], name: "index_categories_on_account_id"
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "address"
-    t.decimal "balance"
-    t.integer "purchases_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,10 +61,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_225744) do
   create_table "images", force: :cascade do |t|
     t.string "name"
     t.string "url"
-    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_images_on_product_id"
+    t.string "photolink_type"
+    t.integer "photolink_id"
   end
 
   create_table "product_categorizations", force: :cascade do |t|
@@ -80,14 +80,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_225744) do
     t.string "name"
     t.text "description"
     t.decimal "price"
-    t.integer "sales_count"
-    t.integer "product_stocks"
-    t.integer "sold_products"
-    t.decimal "product_earnings"
+    t.integer "product_stocks", default: 0
+    t.integer "sold_products", default: 0
+    t.decimal "product_earnings", default: "0.0"
     t.boolean "available"
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sales_count", default: 0, null: false
     t.index ["account_id"], name: "index_products_on_account_id"
   end
 
@@ -95,19 +95,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_225744) do
     t.integer "product_amount"
     t.decimal "total_price"
     t.datetime "purchased_at"
+    t.integer "admin_id"
     t.bigint "product_id", null: false
     t.bigint "account_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_sales_on_account_id"
+    t.index ["category_id"], name: "index_sales_on_category_id"
     t.index ["product_id"], name: "index_sales_on_product_id"
   end
 
   add_foreign_key "categories", "accounts"
-  add_foreign_key "images", "products"
   add_foreign_key "product_categorizations", "categories"
   add_foreign_key "product_categorizations", "products"
   add_foreign_key "products", "accounts"
   add_foreign_key "sales", "accounts"
+  add_foreign_key "sales", "categories"
   add_foreign_key "sales", "products"
 end
