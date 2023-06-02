@@ -44,13 +44,11 @@ OPTIONAL SECTIONS:
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [PP Ecommerce API] <a name="about-project"></a>
+# 📖 PP Ecommerce API <a name="about-project"></a>
 
-> API Developed for interviewing purposes.
-
-# ERD ENTITY RELATIONSHIP DIAGRAM
+# ERD(Entity Relationship Diagram)
 ![image](https://github.com/angeluray/puntospoint-ecommerce/assets/97189760/7397c7dd-e634-4bdc-983a-98b066c84c63)
-
+> API Developed for interviewing purposes.
 
 ## 🛠 Built With <a name="built-with"></a>
 
