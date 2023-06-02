@@ -124,7 +124,9 @@ bundle install
 _Note 1:_ _The port by default is 3001 so that if the API is ever used from a client server the port 3000 will be free for it in Development._
 
 
-_Note 2:_ _This API is partially working features such as the creation of objects such as Admin, Customer, Sales, Products, and Categories, email sent to owner of product after sale(customer purchase), and logic within the controllers is done.
+_Note 2:_ _This API is partially working features such as the creation of objects such as Admin, Customer, Sales, Products, and Categories, email sent to owner of product after sale(customer purchase), and logic within the controllers is done._
+
+_Note 3:_ _There are not tests implemented, however the whole set up of RSpec is done, API calls for JWT authentication were tested but not documented, API calls related to CRUD operations for objects are partially tested but not documented_.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
