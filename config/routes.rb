@@ -11,14 +11,31 @@ Rails.application.routes.draw do
     registrations: 'api/v1/admins/registrations'
   }
 
+  devise_for :customers
+
   namespace :api do
     namespace :v1 do
-      resources :accounts
-      resources :customers
-      resources :admins
+      resources :accounts do
+        resources :products
+        resources :categories
+        resources :sales
+      end
+
+      resources :categories do
+        resources :sales
+      end
+
+      resources :products do
+        resources :sales
+      end
+
       resources :sales
-      resources :categories
-      resources :products
+      
+      get '/purchases_registry', to: 'categoriess#purchases_registry'
+      get '/earnings_registry', to: 'categories#purchases_granularity_search'
+
+      get '/purchases_registry_search', to: 'sales#purchases_registry_search'
+      get '/purchases_granularity_search', to: 'sales#purchases_granularity_search'
     end
   end
 
