@@ -93,31 +93,29 @@ Example commands:
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone git@github.com:angeluray/puntospoint-ecommerce.git
 ```
-
-````sh
-bundle install
-````
-
-````sh
-bundle figaro exec
-````
 
 ### Install
 
 Install this project with:
 
-<!--
-Example command:
+````sh
+bundle install
+````
+> After setting your `username` and `password` in the required fields within the database.yml run the following series of commands:
 
-```sh
-  cd my-project
-  gem install
-```
---->
+````sh
+  rails db:create
+````
 
+````sh
+  rails db:migrate
+````
 
+````sh
+  rails db:seed
+````
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
