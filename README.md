@@ -122,6 +122,8 @@ bundle install
   rails s
 ````
 _Note 1:_ _The port by default is 3001 so that if the API is ever used from a client server the port 3000 will be free for it in Development._
+
+
 _Note 2:_ _This API is partially working features such as the creation of objects such as Admin, Customer, Sales, Products, and Categories, email sent to owner of product after sale(customer purchase), and logic within the controllers is done.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
