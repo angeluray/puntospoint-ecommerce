@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>First sale of <%= @product.name %></h1>
+    <p>Wooho! The product <%= @product.name %> has just made its first sale.</p>
+    <p>Please find below the details of the sale:</p>
+    <ul>
+      <li>Product: <%= @product.name %></li>
+      <li>Price: <%= @product.price %></li>
+      <li>Quantity: <%= @sale.product_amount %></li>
+      <li>Total: <%= @sale.total_price %></li>
+      <li>Date: <%= @sale.purchased_at %></li>
+    </ul>
+  </body>
+</html>
