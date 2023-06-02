@@ -49,7 +49,8 @@ OPTIONAL SECTIONS:
 > API Developed for interviewing purposes.
 
 # ERD ENTITY RELATIONSHIP DIAGRAM
-![drawSQL-puntospoint-ecommerce-export-2023-06-02](https://github.com/angeluray/puntospoint-ecommerce/assets/97189760/ed1cc5ae-0b34-4e68-8114-65973b552869)
+![image](https://github.com/angeluray/puntospoint-ecommerce/assets/97189760/7397c7dd-e634-4bdc-983a-98b066c84c63)
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
