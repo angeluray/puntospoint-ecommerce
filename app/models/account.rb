@@ -8,4 +8,14 @@ class Account < ApplicationRecord
     has_many :products, dependent: :destroy
     has_many :sales
     has_many :categories
+
+    validates :email, presence: true, uniqueness: true,
+            format: { with: URI::MailTo::EMAIL_REGEXP }
+
+    validates :password, presence: true,
+              length: { minimum: 8 },
+              format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W])\S{8,}\z/ }
+
+    validates :first_name, presence: true, length: { maximum: 50 }
+    validates :last_name, presence: true, length: { maximum: 50 }
 end
