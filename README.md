@@ -116,6 +116,13 @@ bundle install
 ````sh
   rails db:seed
 ````
+>  You should be good to go, now you can start the server by running:
+
+````sh
+  rails s
+````
+_Note:_ _The port by default is 3001 so that if the API is ever used from a client server the port 3000 will be free for it in Development.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
