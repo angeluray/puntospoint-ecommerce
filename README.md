@@ -74,8 +74,6 @@ OPTIONAL SECTIONS:
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
@@ -90,14 +88,21 @@ In order to run this project you need at least the following versions of:
 
 Clone this repository to your desired folder:
 
-<!--
+
 Example commands:
 
 ```sh
   cd my-folder
   git clone git@github.com:myaccount/my-project.git
 ```
---->
+
+````sh
+bundle install
+````
+
+````sh
+bundle figaro exec
+````
 
 ### Install
 
