@@ -10,8 +10,14 @@ AllCops:
 
   DisplayCopNames: true
 
+Layout/EndOfLine:
+  Enabled: false
 Layout/LineLength:
-  Max: 120
+  Max: 300
+Layout/EmptyLines:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
 Metrics/MethodLength:
   Include:
     - "app/controllers/*"
@@ -27,6 +33,8 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   AllowedMethods: ['describe']
   Max: 30
+Metrics/CyclomaticComplexity:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false

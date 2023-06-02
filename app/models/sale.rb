@@ -4,7 +4,7 @@ class Sale < ApplicationRecord
   counter_culture :product
   belongs_to :category
   counter_culture :category
-  
+
   before_save :decrease_product_stocks
   before_save :add_total_amount
   before_save :set_admin
@@ -29,47 +29,45 @@ class Sale < ApplicationRecord
   end
 
   def send_first_sale_notification
-    if product.sales_count == 1
-      creator = product.account
-      admins = Account.where(type: 'admin').where.not(id: creator.id)
+    return unless product.sales_count == 1
 
-      ProductMailer.product_first_sale_notification(creator, admins, product, self).deliver_now
-    end
+    creator = product.account
+    admins = Account.where(type: 'admin').where.not(id: creator.id)
+
+    ProductMailer.product_first_sale_notification(creator, admins, product, self).deliver_now
   end
 
   def add_total_amount
-    product = Product.find(self.product_id)
-    self.total_price ||= BigDecimal((self.product_amount * product.price).to_s)
+    product = Product.find(product_id)
+    self.total_price ||= BigDecimal((product_amount * product.price).to_s)
   end
 
   private
 
   def set_admin
-    if self.admin_id.nil? || self.admin_id?
-      product = Product.find(self.product_id)
-      admin = Account.find(product.account_id)
-      self.admin_id = admin.id
-    end
+    return unless admin_id.nil? || admin_id?
+
+    product = Product.find(product_id)
+    admin = Account.find(product.account_id)
+    self.admin_id = admin.id
   end
 
   def decrease_product_stocks
-    product = Product.find(self.product_id)
-    product.product_stocks -= self.product_amount
-    product.product_stocks = 0 if product.product_stocks < 0
-    if product.product_stocks == 0
-      product.available = false
-    end
+    product = Product.find(product_id)
+    product.product_stocks -= product_amount
+    product.product_stocks = 0 if product.product_stocks.negative?
+    product.available = false if product.product_stocks.zero?
     product.save
   end
 
   def increase_sold_products
-    product = Product.find(self.product_id)
-    product.sold_products += self.product_amount
+    product = Product.find(product_id)
+    product.sold_products += product_amount
     product.save
   end
 
   def increase_earnings
-    product = Product.find(self.product_id)
+    product = Product.find(product_id)
     product.product_earnings += self.total_price
     product.save
   end
