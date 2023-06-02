@@ -4,10 +4,9 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :name
       t.text :description
       t.decimal :price
-      t.integer :sales_count
-      t.integer :product_stocks
-      t.integer :sold_products
-      t.decimal :product_earnings
+      t.integer :product_stocks, default: 0
+      t.integer :sold_products, default: 0
+      t.decimal :product_earnings, default: 0
       t.boolean :available
       t.references :account, null: false, foreign_key: true
 
