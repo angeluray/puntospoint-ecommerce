@@ -95,4 +95,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Set port 3001 as default to use 3000 from frontend if required
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
 end

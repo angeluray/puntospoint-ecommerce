@@ -25,6 +25,7 @@ gem 'puma', '~> 5.0'
 # gem "bcrypt", "~> 3.1.7"
 
 
+
 # Use it for store your lcoal username and password database values
 gem 'figaro'
 
@@ -40,7 +41,14 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem "rack-cors"
+gem "rack-cors"
+
+# Required to implement the JWT Auth
+gem 'devise'
+gem 'devise-jwt'
+gem 'jsonapi-serializer'
+
+gem 'mail'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -57,3 +65,8 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+gem "sidekiq", "~> 7.1"
+
+# Counter cache
+gem 'counter_culture'
