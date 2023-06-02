@@ -2,7 +2,7 @@ require 'csv'
 
 class DailyReportJob < ApplicationJob
   queue_as :default
-  
+
   def perform
     purchases = Sale.where(created_at: Date.yesterday.all_day)
 
@@ -20,7 +20,6 @@ class DailyReportJob < ApplicationJob
   end
 
   def generate_report(report_data)
-
     CSV.generate(headers: true) do |csv|
       csv << ['Product ID', 'Total Amount']
       report_data.each do |product_id, total_amount|
@@ -28,5 +27,4 @@ class DailyReportJob < ApplicationJob
       end
     end
   end
-
 end
