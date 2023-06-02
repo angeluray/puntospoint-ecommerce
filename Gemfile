@@ -41,7 +41,7 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem "rack-cors"
+gem 'rack-cors'
 
 # Required to implement the JWT Auth
 gem 'devise'
@@ -56,7 +56,7 @@ group :development, :test do
 
   # Set up testing framework
   gem 'rspec-rails', '~> 6.0', '>= 6.0.2'
-  
+
   # Remove n+1 queries
   gem 'bullet'
 end
@@ -66,7 +66,7 @@ group :development do
   # gem "spring"
 end
 
-gem "sidekiq", "~> 7.1"
+gem 'sidekiq', '~> 7.1'
 
 # Counter cache
 gem 'counter_culture'

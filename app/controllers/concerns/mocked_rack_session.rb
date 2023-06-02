@@ -1,7 +1,7 @@
 module MockedRackSession
   extend ActiveSupport::Concern
-  
-  class MockSession < Hash 
+
+  class MockSession < Hash
     def enabled?
       false
     end
@@ -15,9 +15,7 @@ module MockedRackSession
     private
 
     def set_mocked_session
-        request.env['rack.session'] ||= MockSession.new
+      request.env['rack.session'] ||= MockSession.new
     end
   end
-
-
 end

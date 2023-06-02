@@ -1,5 +1,5 @@
 class Api::V1::SalesController < ApplicationController
-  before_action :set_sale, only: %i[ show update destroy ]
+  before_action :set_sale, only: %i[show update destroy]
 
   # GET /sales
   def index
@@ -39,13 +39,14 @@ class Api::V1::SalesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sale
-      @sale = Sale.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def sale_params
-      params.require(:sale).permit(:product_amount, :total_price, :purchased_at)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_sale
+    @sale = Sale.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def sale_params
+    params.require(:sale).permit(:product_amount, :total_price, :purchased_at)
+  end
 end

@@ -1,5 +1,5 @@
 class Api::V1::CustomersController < ApplicationController
-  before_action :set_customer, only: %i[ show update destroy ]
+  before_action :set_customer, only: %i[show update destroy]
 
   # GET /customers
   def index
@@ -39,13 +39,14 @@ class Api::V1::CustomersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def customer_params
-      params.require(:customer).permit(:address, :balance, :purchases_count)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def customer_params
+    params.require(:customer).permit(:address, :balance, :purchases_count)
+  end
 end
