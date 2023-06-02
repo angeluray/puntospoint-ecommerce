@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::V1::Accounts::SessionsController < Devise::SessionsController
+class Api::V1::Admins::SessionsController < Devise::SessionsController
   include MockedRackSession
   respond_to :json
   
@@ -10,14 +10,14 @@ class Api::V1::Accounts::SessionsController < Devise::SessionsController
     render json: {
       status: { 
         code: 200, message: 'Logged in successfully.',
-        data: { account: AccountSerializer.new(current_user).serializable_hash[:data][:attributes] }
+        data: { admin: AdminSerializer.new(current_user).serializable_hash[:data][:attributes] }
       }
     }, status: :ok
   end
 
   def respond_to_on_destroy
     if request.headers['Authorization'].present?
-      jwt_payload = JWT.decode(request.headers['Authorization'].split(' ').last, Rails.application.credentials.jwt_secret_key!).first
+      jwt_payload = JWT.decode(request.headers['Authorization'].split(' ').last, Rails.application.credentials.admin_jwt_secret_key!).first
       current_user = Account.find(jwt_payload['sub'])
     end
     
@@ -29,9 +29,8 @@ class Api::V1::Accounts::SessionsController < Devise::SessionsController
     else
       render json: {
         status: 401,
-        message: "Couldn't find an active session."
+        message: "Could not find a current active session."
       }, status: :unauthorized
     end
   end
-
 end
