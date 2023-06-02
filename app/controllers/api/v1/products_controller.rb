@@ -1,14 +1,11 @@
 class Api::V1::ProductsController < ApplicationController
   before_action :set_product, only: %i[ show update destroy ]
 
-  # GET /products
   def index
     @products = Product.all
 
     render json: @products
   end
-
-  # GET /products/1
   def show
     render json: @product
   end
@@ -16,15 +13,15 @@ class Api::V1::ProductsController < ApplicationController
   # POST /products
   def create
     @product = Product.new(product_params)
+    @category = Category.find(params[:category_id])
 
     if @product.save
+      ProductCategorization.create(product_id: @product.id, category_id: @category.id)
       render json: @product, status: :created, location: @product
     else
       render json: @product.errors, status: :unprocessable_entity
     end
   end
-
-  # PATCH/PUT /products/1
   def update
     if @product.update(product_params)
       render json: @product
@@ -33,7 +30,6 @@ class Api::V1::ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
   def destroy
     @product.destroy
   end
