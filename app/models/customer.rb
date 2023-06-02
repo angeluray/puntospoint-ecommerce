@@ -1,6 +1,4 @@
 class Customer < Account
-  has_many :sales, foreign_key: 'account_id', dependent: :destroy, inverse_of: :customer
-
-  # Add a counter cache for sales
-  counter_cache :purchases_count
+  validates :address, presence: true, length: { maximum: 200 }
+  validates :balance, numericality: { greater_than_or_equal_to: 0 }
 end
