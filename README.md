@@ -128,6 +128,8 @@ _Note 2:_ _This API is partially working features such as the creation of object
 
 _Note 3:_ _There are not tests implemented, however the whole set up of RSpec is done, API calls for JWT authentication were tested but not documented, API calls related to CRUD operations for objects are partially tested but not documented_.
 
+_Note 4:_ _Logic for daily reports and mails is partially implemented but not tested, requires more development to ensure 100% of functionality.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
