@@ -13,13 +13,12 @@ module Authenticable
       return render_unauthorized('Unauthorized')
     end
 
-    rescue JWT::DecodeError => e
-      Rails.logger.error("JWT decode error: #{e.message}")
-      render_unauthorized('Invalid token')
-    end
+  rescue JWT::DecodeError => e
+    Rails.logger.error("JWT decode error: #{e.message}")
+    render_unauthorized('Invalid token')
+  end
 
-    def render_unauthorized(message)
-      render json: { error: message }, status: :unauthorized
-    end
+  def render_unauthorized(message)
+    render json: { error: message }, status: :unauthorized
   end
 end
